@@ -163,3 +163,12 @@
 
   - name: Create symlink to shared folder in home
     file: src={{vagrantShare}} dest={{shared}} owner={{user}} group={{user}} state=link
+
+  - name: Create symlink to shared folder in home
+    file: src={{vagrantShare}} dest={{shared}} owner={{user}} group={{user}} state=link
+
+  - name: Move projects to shared folder
+    command: "mv {{nrf}}/projects {{shared}}/projects"
+
+  - name: Create symlink to projects in shared folder
+    file: src="{{shared}}/projects" dest="{{nrf}}/projects" owner={{user}} group={{user}} state=link
